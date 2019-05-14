@@ -139,10 +139,16 @@ module.cycleRight = function ()
   end
 end
 
+local maxFlag = true
 module.topHalf = function ()
-  local this = windowMeta.new()
-  local cell = Cell(0, 0, this.screenGrid.w, 0.5 * this.screenGrid.h)
-  grid.set(this.window, cell, this.screen)
+  if maxFlag then
+    module.maximizeWindow()
+  else
+    local this = windowMeta.new()
+    local cell = Cell(0, 0, this.screenGrid.w, 0.5 * this.screenGrid.h)
+    grid.set(this.window, cell, this.screen)
+  end
+  maxFlag = not maxFlag
 end
 
 module.bottomHalf = function ()
